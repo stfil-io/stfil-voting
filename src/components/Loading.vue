@@ -2,7 +2,7 @@
   <div class="preloader d-flex align-items-center justify-content-center" style="width: 100%;height: 40vh;background-color: white;">
     <div class="block">
       <div class="loader-image mb-20">
-        <img src="@/assets/images/preloader.png" alt="">
+        <img src="@/assets/images/logo/logo-light.png" alt="" style="width: 50px;height: 50px;">
       </div>
     </div>
   </div>

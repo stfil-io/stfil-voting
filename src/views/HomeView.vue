@@ -1,13 +1,13 @@
 <template>
   <div>
     <section v-if="!detail.show"
-             class="banner bg-cover-bottom has-shapes bg-light-gray has-bg-brash bg-brash-bottom aos-init aos-animate"
+             class="banner bg-cover-bottom has-shapes has-bg-brash bg-brash-bottom aos-init aos-animate"
              data-aos="fade-in" data-aos-delay="150">
       <div class="container">
         <div class="row justify-content-center align-items-center">
           <div class="col-lg-8 col-md-9 text-left">
-            <h1 class="section-title font-weight-bold text-primary">投票</h1>
-            <h2 class="section-title text-primary">对 STFIL 的未来发表看法</h2>
+            <h1 class="section-title fw-extra-bold fs-50">投票</h1>
+            <h2 class="section-title fw-extra-bold">对 STFIL 的未来发表看法</h2>
           </div>
           <div class="col-lg-4">
             <img src="@/assets/images/voting-presents.png" alt="">
@@ -15,7 +15,7 @@
         </div>
       </div>
     </section>
-    <section class="banner bg-cover-bottom has-shapes"
+    <section class="banner bg-cover-bottom has-shapes bg-white"
              data-aos="fade-in" data-aos-delay="150">
       <div class="container" v-if="detail.show">
 
@@ -131,12 +131,12 @@
       </div>
       <div class="container" v-if="!detail.show">
         <div class="mb-4">
-          <h2 class="font-weight-bold">提案</h2>
+          <h2 class="fw-bold">提案</h2>
         </div>
         <div>
           <div class="tabs-navbar">
             <ul class="nav nav-tabs mb-3" id="pills-tab-top" role="tablist">
-              <li class="nav-item mr-2" role="presentation" v-for="t in type" :key="t.value"
+              <li class="nav-item mr-2 fw-medium" role="presentation" v-for="t in type" :key="t.value"
                   @click="checkType(t.value)">
                 <a class="nav-link cursor-pointer" :class="t.value === check.type ? 'active': ''"
                    role="tab"
@@ -158,7 +158,7 @@
                 <empty v-if="!proposalData.records || proposalData.records.length === 0"/>
                 <div class="mb-4" data-aos="fade-up" @click="showDetail(proposal)" data-aos-delay="50" :key="index"
                      v-for="(proposal,index) in proposalData.records">
-                  <div class="bg-white shadow rounded p-20 icon-box" style="cursor: pointer">
+                  <div class="bg-white rounded p-20 icon-box" style="cursor: pointer;box-shadow: 0px 4px 24px 0px rgb(16 27 82 / 8%)">
                     <div class="card-body">
                       <div class="row justify-content-between align-items-center mb-2">
                         <div class="col-10 row m-0 align-items-center align-content-center">

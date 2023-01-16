@@ -3005,6 +3005,8 @@ VERSION:	v1.0
     visibility: hidden;
     transition: .3s ease-out; }
   @media (max-width: 575px) {
+    .p-sm-30 {
+      padding: 30px; }
     .scroll-to-top-btn {
       right: 15px; }
     .scroll-to-top-btn svg {

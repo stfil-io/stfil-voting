@@ -27,7 +27,7 @@ h6, .h6 {
     font-size: $h6;
 }
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
-    color: $black-200;
+    color: $primary-text-color;
     line-height: 1.3;
 }
 h1 a:hover, a.h1:hover, h2 a:hover, a.h2:hover, h3 a:hover, a.h3:hover, h4 a:hover, a.h4:hover, h5 a:hover, a.h5:hover, h6 a:hover, a.h6:hover {
@@ -41,7 +41,7 @@ p {
 }
 a:focus,
 button:focus {
-	outline: 0;
+    outline: 0;
 }
 a {
     text-decoration: none;
@@ -49,12 +49,12 @@ a {
 }
 a:hover {
     text-decoration: underline;
-	color: initial;
+    color: initial;
 }
 ol, ul {
     list-style-position: inside;
 }
 ul, li {
-	padding: 0;
-	margin: 0;
+    padding: 0;
+    margin: 0;
 }

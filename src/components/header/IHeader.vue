@@ -1,9 +1,9 @@
 <template>
-  <header class="header-nav position-relative bg-light-gray">
+  <header class="header-nav position-relative">
     <div class="container">
       <nav class="navbar navbar-expand-xl navbar-light px-0">
         <a class="navbar-brand p-0" href="#">
-          <img class="img-fluid" src="@/assets/logo.png">
+          <img class="img-fluid logo-ad" src="@/assets/logo.png">
         </a>
 
         <button class="navbar-toggler bg-white rounded-0 p-0" type="button" data-toggle="collapse"
@@ -20,15 +20,15 @@
         <!-- mobile-nav control button -->
 
         <div class="collapse navbar-collapse" id="navlinks">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item" v-for="(menu ,index) in menus" :key="index">
-              <a class="nav-link" href="#">{{ menu.label }}</a>
-            </li>
-          </ul>
+<!--          <ul class="navbar-nav ml-auto">-->
+<!--            <li class="nav-item" v-for="(menu ,index) in menus" :key="index">-->
+<!--              <a class="nav-link" href="#">{{ menu.label }}</a>-->
+<!--            </li>-->
+<!--          </ul>-->
         </div>
 
         <div class="navbar-button" v-if="!address">
-          <button class="btn btn-sm btn-outline-primary" data-toggle="modal" @click="connectWallet"
+          <button class="btn btn-sm btn-outline-primary wallet-btn" data-toggle="modal" @click="connectWallet"
                   data-target="#signup-modal">连接钱包 {{
               isConnecting && pendingConnector && connectors[0].id === pendingConnector?.id ? ' (connecting...)' : ''
             }}

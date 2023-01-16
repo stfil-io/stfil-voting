@@ -1,7 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap');
 
 body {
-	color: $black-300;
+	color: $primary-text-color !important;
 	background-color: $white;
 	font-family: $font-primary;
 	font-weight: 500;
@@ -375,7 +375,7 @@ body {
 	}
 }
 
-.tabs-navbar {
+.slide-tabs-navbar {
 	.nav-link {
 
 		&.active,
@@ -428,19 +428,19 @@ body {
 		border-radius: 0;
 	}
 
-	.custom-control-input:checked~.custom-control-label::before,
-	.custom-control-input:not(:disabled):active~.custom-control-label::before {
+	.custom-control-input:checked ~ .custom-control-label::before,
+	.custom-control-input:not(:disabled):active ~ .custom-control-label::before {
 		background-color: $color-primary;
 		border-color: $color-primary;
 		box-shadow: none;
 	}
 
-	.custom-control-input:focus:not(:checked)~.custom-control-label::before {
+	.custom-control-input:focus:not(:checked) ~ .custom-control-label::before {
 		border-color: $color-primary;
 		box-shadow: none;
 	}
 
-	.custom-control-input:disabled:checked~.custom-control-label::before {
+	.custom-control-input:disabled:checked ~ .custom-control-label::before {
 		background-color: rgba($color-primary, .5);
 		border-color: rgba($color-primary, .2);
 		box-shadow: none;
@@ -726,61 +726,61 @@ $max: 121; // maximum value (+)1
 		margin: #{$value}px
 	}
 
-	;
+;
 
 	.mt-#{$value} {
 		margin-top: #{$value}px
 	}
 
-	;
+;
 
 	.mb-#{$value} {
 		margin-bottom: #{$value}px
 	}
 
-	;
+;
 
 	.ml-#{$value} {
 		margin-left: #{$value}px
 	}
 
-	;
+;
 
 	.mr-#{$value} {
 		margin-right: #{$value}px
 	}
 
-	;
+;
 
 	.p-#{$value} {
 		padding: #{$value}px
 	}
 
-	;
+;
 
 	.pt-#{$value} {
 		padding-top: #{$value}px
 	}
 
-	;
+;
 
 	.pb-#{$value} {
 		padding-bottom: #{$value}px
 	}
 
-	;
+;
 
 	.pl-#{$value} {
 		padding-left: #{$value}px
 	}
 
-	;
+;
 
 	.pr-#{$value} {
 		padding-right: #{$value}px
 	}
 
-	;
+;
 }
 
 
@@ -805,7 +805,7 @@ $max: 121; // maximum value (+)1
 		}
 	}
 
-	ol{
+	ol {
 		margin-left: 0;
 		padding-left: 0;
 	}
@@ -965,7 +965,7 @@ $max: 121; // maximum value (+)1
 	text-align: right;
 }
 
-@media screen and (max-width: 1000px){
+@media screen and (max-width: 1000px) {
 	.fdo-address-text {
 		justify-content: start;
 		text-align: left;
@@ -973,39 +973,39 @@ $max: 121; // maximum value (+)1
 }
 
 .fs-1 {
-	font-size: 2.5rem!important;
+	font-size: 2.5rem !important;
 }
 
 .fs-2 {
-	font-size: 2rem!important;
+	font-size: 2rem !important;
 }
 
 .fs-3 {
-	font-size: 1.75rem!important;
+	font-size: 1.75rem !important;
 }
 
 .fs-4 {
-	font-size: 1.5rem!important;
+	font-size: 1.5rem !important;
 }
 
 .fs-5 {
-	font-size: 1.25rem!important;
+	font-size: 1.25rem !important;
 }
 
 .fs-6 {
-	font-size: 1rem!important;
+	font-size: 1rem !important;
 }
 
 .fs-7 {
-	font-size: 0.85rem!important;
+	font-size: 0.85rem !important;
 }
 
 .fs-8 {
-	font-size: 0.75rem!important;
+	font-size: 0.75rem !important;
 }
 
 .fs-9 {
-	font-size: 0.65rem!important;
+	font-size: 0.65rem !important;
 }
 
 .alert-pink {
@@ -1018,36 +1018,191 @@ $max: 121; // maximum value (+)1
 	background-color: transparent !important;
 }
 
-.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active{
+.nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
 	transform: translateY(1px);
 	font-weight: bold;
 }
 
 
-
-@media (min-width:1200px){
+@media (min-width: 1200px) {
 	.section-padding {
 		padding: 80px 0;
 	}
 }
 
-@media (min-width:768px){
-	.section-padding {
-		padding: 40px 0;
-	}
-}
-@media (min-width:992px){
+@media (min-width: 768px) {
 	.section-padding {
 		padding: 40px 0;
 	}
 }
 
-@media (min-width:576px){
+@media (min-width: 992px) {
+	.section-padding {
+		padding: 40px 0;
+	}
+}
+
+@media (min-width: 576px) {
 	.section-padding {
 		padding: 80px 0;
 	}
 }
 
-.cursor-pointer{
+.cursor-pointer {
 	cursor: pointer;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none !important;
+}
+
+input[type="number"] {
+	-moz-appearance: textfield;
+}
+
+.content-full-height {
+	min-height: calc(100vh - 95.5px - 146px);
+}
+
+.text-driver {
+	width: 90%;
+	margin: 0 auto;
+	height: 1px;
+	background-color: rgb(242, 244, 246);
+	opacity: 0.1;
+	border-radius: 100%;
+}
+
+.fs-12 {
+	font-size: 0.75rem !important;
+}
+
+.fs-14 {
+	font-size: 0.875rem !important;
+}
+
+.fs-16 {
+	font-size: 1rem !important;
+}
+
+.fs-18 {
+	font-size: 1.125rem !important;
+}
+
+@media only screen and (max-width: 576px) {
+	.fs-sm-14 {
+		font-size: 0.875rem !important;
+	}
+}
+
+.fs-24 {
+	font-size: 1.5rem !important;
+}
+
+.fs-30 {
+	font-size: 1.875rem !important;
+}
+
+.fs-36 {
+	font-size: 2.25rem !important;
+}
+
+@media only screen and (max-width: 768px) {
+	.fs-36 {
+		font-size: 1.5rem !important;
+	}
+}
+
+.fs-42 {
+	font-size: 2.625rem !important;
+}
+
+.fs-50 {
+	font-size: 3.125rem !important;
+}
+
+.input-email::-webkit-input-placeholder {
+	color: $primary-text-color;
+	font-size: 1rem;
+	opacity: .6;
+	font-weight: 500;
+}
+
+.input-email:-moz-placeholder {
+	color: $primary-text-color;
+	font-size: 1rem;
+	opacity: .6;
+	font-weight: 500;
+}
+
+.input-email:-ms-input-placeholder {
+	color: $primary-text-color;
+	font-size: 1rem;
+	opacity: .6;
+	font-weight: 500;
+}
+
+.btn-max {
+	background-color: #ff687d;
+	border-radius: 4px !important;
+}
+
+.btn-max:hover {
+	background-color: #FF94A2;
+	border-radius: 4px;
+}
+
+.opacity-08{
+	opacity: 0.8;
+}
+
+.opacity-06{
+	opacity: 0.6;
+}
+
+.w-class{
+	position: relative;
+}
+
+.w-class:hover::before {
+	border: 10px solid transparent;
+	border-right: 15px solid rgba(16, 27, 83, 0.8);
+	position: absolute;
+	content: "";
+	top: 10px;
+	margin-top: -10px;
+	right: -20px;
+	z-index: 10;
+}
+
+.w-class:hover::after{
+	content: 'Liquidity stake protocol, built on top of Filecoin, allows users to earn block rewards without locking up assets or maintaining Storage Provider infrastructure.';
+	position: absolute;
+	color: #FFFFFF;
+	font-weight: 500;
+	padding: 25px;
+	right: -244px;
+	top: -180px;
+	width: 224px;
+	z-index: 5;
+	height: 216px;
+	background-color: rgba(16, 27, 83, 0.8);
+	border-radius: 14px;
+	box-shadow: 0px 6px 24px 0px rgba(21,42,149,0.12);
+}
+
+.wallet-btn{
+	color: #101B52 !important;
+	border: 1px solid #a9b2d7 !important;
+	border-radius: 30px !important;
+	background-color: transparent !important;
+}
+
+.wallet-btn:focus{
+	color: white !important;
+}
+
+.wallet-btn:hover{
+	color: white !important;
 }
