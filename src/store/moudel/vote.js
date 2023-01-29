@@ -14,6 +14,10 @@ let vote = {
         async getVoteList({commit}, {proposalId}) {
             let data = await Http.get('vote', {params: {proposalId}})
             commit('setVoteList', data)
+        },
+        // eslint-disable-next-line no-empty-pattern
+        async getVoterInfo({}, {address, blockNumber}) {
+            return await Http.get('wallet/user', {params: {address, blockNumber}})
         }
     },
     modules: {}

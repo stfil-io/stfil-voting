@@ -1206,3 +1206,13 @@ input[type="number"] {
 .wallet-btn:hover{
 	color: white !important;
 }
+
+.cid-class{
+	cursor: pointer;
+	text-decoration:underline;
+}
+
+.select-btn-vote{
+	background-color: $color-primary !important;
+	color: white !important;
+}

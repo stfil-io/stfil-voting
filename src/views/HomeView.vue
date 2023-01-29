@@ -184,7 +184,7 @@
                         还剩2天
                       </div>
                       <div>
-                        <button type="button" class="btn btn-primary btn-sm">立即投票</button>
+                        <button type="button" class="btn btn-primary btn-sm">查看详情</button>
                       </div>
                     </div>
                   </div>
