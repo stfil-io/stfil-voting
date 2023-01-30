@@ -18,6 +18,10 @@ let proposal = {
         async getProposalList({commit}, {type, status}) {
             let data = await Http.get('proposal', {params: {type, status}})
             commit('setProposalList', data)
+        },
+        // eslint-disable-next-line no-empty-pattern
+        async getVoteResult({}, {proposalId}) {
+            return await Http.get('vote/voteResult', {params: {proposalId}})
         }
     },
     modules: {}

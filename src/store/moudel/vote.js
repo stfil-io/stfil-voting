@@ -18,6 +18,10 @@ let vote = {
         // eslint-disable-next-line no-empty-pattern
         async getVoterInfo({}, {address, blockNumber}) {
             return await Http.get('wallet/user', {params: {address, blockNumber}})
+        },
+        // eslint-disable-next-line no-empty-pattern
+        async addVote({}, {proposalId, choice, created, reason, voter, vp, sign}) {
+            return await Http.post('vote', {data: {proposalId, choice, created, reason, voter, vp, sign}})
         }
     },
     modules: {}
