@@ -1223,7 +1223,7 @@ input[type="number"] {
 	left: 50%;
 	right: 50%;
 	transform: translateX(-50%);
-	width: 300px;
+	min-width: 400px;
 	background-color: #52c465;
 	z-index: 1999;
 	text-align: center;
@@ -1244,7 +1244,7 @@ input[type="number"] {
 	left: 50%;
 	right: 50%;
 	transform: translateX(-50%);
-	width: 300px;
+	min-width: 400px;
 	background-color: #bf2323;
 	z-index: 1999;
 	text-align: center;

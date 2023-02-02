@@ -170,7 +170,7 @@
                           <span class="pt-1">{{ proposal.author }}</span>
                         </div>
                         <div class="col-2 text-right">
-                          <span class="badge badge-pill badge-primary">活跃</span></div>
+                          <span class="badge badge-pill" :class="proposalStatusMap[proposal.proposalStatus].className">{{proposalStatusMap[proposal.proposalStatus].label}}</span></div>
                       </div>
                       <div class="row mb-2">
                         <h4 class="col-12 font-weight-bold">{{ proposal.title }}</h4>
@@ -201,6 +201,7 @@
 <script>
 import Loading from '@/components/Loading'
 import Empty from '@/components/Empty'
+import {proposalStatusMap} from "@/utils/model";
 
 // @ is an alias to /src
 export default {
@@ -209,6 +210,7 @@ export default {
   data() {
     return {
       loading: false,
+      proposalStatusMap: proposalStatusMap,
       type: [{
         label: '核心',
         value: 'core'
@@ -254,7 +256,7 @@ export default {
     },
     showDetail(proposal) {
       this.$store.commit('setProposalDetail', proposal)
-      this.$router.push({path: '/details'})
+      this.$router.push({path: '/proposal/' + proposal.id})
     },
     checkType(val) {
       this.check.type = val

@@ -2,7 +2,9 @@ import Http from "@/utils/http";
 
 let vote = {
     state: {
-        data: {}
+        data: {
+            records: []
+        }
     },
     getters: {},
     mutations: {
