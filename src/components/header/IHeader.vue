@@ -20,22 +20,36 @@
         <!-- mobile-nav control button -->
 
         <div class="collapse navbar-collapse" id="navlinks">
-<!--          <ul class="navbar-nav ml-auto">-->
-<!--            <li class="nav-item" v-for="(menu ,index) in menus" :key="index">-->
-<!--              <a class="nav-link" href="#">{{ menu.label }}</a>-->
-<!--            </li>-->
-<!--          </ul>-->
+          <!--          <ul class="navbar-nav ml-auto">-->
+          <!--            <li class="nav-item" v-for="(menu ,index) in menus" :key="index">-->
+          <!--              <a class="nav-link" href="#">{{ menu.label }}</a>-->
+          <!--            </li>-->
+          <!--          </ul>-->
+        </div>
+
+        <div class="navbar-button mr-4">
+          <div class="border p-1 pl-4 pr-4" data-toggle="modal" data-target="#netWorkModal"
+               style="cursor: pointer; border-radius: 50px;" @click="switchNetWork">
+            <div class="ml-1">
+            <span>
+                  <img :src="chainsMap[chain?.id].img" alt="" style="width: 20px; height: 20px; margin-right: 5px;">
+                </span>
+              <span class="fw-medium fs-12 ml-1">{{ chainsMap[chain?.id].name }}</span>
+            </div>
+          </div>
         </div>
 
         <div class="navbar-button" v-if="!address">
           <button class="btn btn-sm btn-outline-primary wallet-btn" data-toggle="modal" @click="connectWallet"
+                  style="padding-top: 0.35rem; padding-bottom: 0.35rem; border-color: #dee2e6 !important;"
                   data-target="#signup-modal">连接钱包 {{
               isConnecting && pendingConnector && connectors[0].id === pendingConnector?.id ? ' (connecting...)' : ''
             }}
           </button>
         </div>
         <div class="d-flex flex-row justify-content-center" v-if="address">
-          <div class="border p-1 pl-2 pr-2" data-toggle="modal" data-target="#exampleModal" style="cursor: pointer; border-radius: 50px;">
+          <div class="border p-1 pl-4 pr-4" data-toggle="modal" data-target="#exampleModal"
+               style="cursor: pointer; border-radius: 50px;">
             <div class="ml-1">
             <span>
                   <img style="border-radius: 100%; width: 25px;" src="@/assets/images/avatar/default.webp" alt="">
@@ -46,11 +60,14 @@
         </div>
       </nav>
     </div>
+
   </header>
 </template>
 
 <script>
-import {useConnect,useAccount} from 'vagmi';
+import {useAccount, useConnect, useNetwork} from 'vagmi';
+import {chainsMap} from "@/utils/model";
+
 
 export default {
   name: "IHeader",
@@ -66,7 +83,10 @@ export default {
         {
           label: 'Home'
         },
-      ]
+      ],
+      chain: undefined,
+      chains: [],
+      chainsMap: chainsMap
     }
   },
   watch: {
@@ -90,13 +110,22 @@ export default {
 
     const {address} = useAccount();
     this.address = address
+
+    const {chain, chains} = useNetwork();
+    this.chain = chain
+    console.log(this.chain)
+    this.chains = chains
+    console.log(this.chains)
   },
   methods: {
     connectWallet() {
       if (this.isConnecting && this.pendingConnector && this.connectors[0].id === this.pendingConnector?.id) {
         return
       }
-      this.connect(this.connectors[0])
+      this.connect({
+        chainId: 3141,
+        connector: this.connectors[0]
+      })
     }
   },
   computed: {

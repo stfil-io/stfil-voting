@@ -1,28 +1,24 @@
 import {createApp} from 'vue'
-import {chain, configureChains, createClient, VagmiPlugin} from 'vagmi';
-import {publicProvider} from 'vagmi/providers/public';
-import {InjectedConnector} from 'vagmi/connectors/injected';
+import {configureChains, createClient, VagmiPlugin} from 'vagmi';
+import {jsonRpcProvider} from 'vagmi/providers/jsonRpc'
 import '@/assets/scss/style.scss'
 import router from './router'
 import store from './store'
 import App from './App.vue'
+import {filChain} from "@/utils/filChain";
+import {InjectedConnector} from 'vagmi/connectors/injected';
 
-const {provider, webSocketProvider} = configureChains(
-    [chain.mainnet, chain.polygon],
-    [publicProvider()],
+const {chains, provider, webSocketProvider} = configureChains(
+    [filChain],
+    [jsonRpcProvider({
+        rpc: () => ({
+            http: `https://api.hyperspace.node.glif.io/rpc/v1`,
+        }),
+    }),],
 );
-
 const client = createClient({
     autoConnect: true,
-    connectors: [
-        new InjectedConnector({
-            chains: [chain.mainnet, chain.optimism],
-            options: {
-                name: 'Injected',
-                shimDisconnect: true,
-            }
-        })
-    ],
+    connectors: [new InjectedConnector({chains})],
     provider,
     webSocketProvider,
 });

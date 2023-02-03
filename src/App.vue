@@ -1,6 +1,7 @@
 <template>
   <div class="position-relative">
-    <img alt="" src="@/assets/images/bg/bg.png" width="100%" height="100%" class="position-absolute" loading="lazy" style="z-index: -1;">
+    <img alt="" src="@/assets/images/bg/bg.png" width="100%" height="100%" class="position-absolute" loading="lazy"
+         style="z-index: -1;">
     <div class="preloader position-fixed d-flex align-items-center justify-content-center">
       <div class="block">
         <div class="loader-image mb-20">
@@ -16,7 +17,8 @@
     <router-view/>
     <i-footer></i-footer>
     <!-- Modal -->
-    <div class="modal fade" ref="exampleModal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" ref="exampleModal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content p-2">
           <div class="modal-header" style="border-bottom: none;">
@@ -30,7 +32,8 @@
               <div class="row align-items-center justify-content-between">
                 <div class="col-6 fs-7 text-black-800">Connected with MetaMask</div>
                 <div class="col-6 text-right">
-                  <button type="button" class="btn btn-outline-primary" style="padding: 5px 15px;" @click="disconnectFun">
+                  <button type="button" class="btn btn-outline-primary" style="padding: 5px 15px;"
+                          @click="disconnectFun">
                     Disconnect
                   </button>
                 </div>
@@ -52,12 +55,38 @@
         </div>
       </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" ref="netWorkModal" id="netWorkModal" tabindex="-1" aria-labelledby="netWorkModal"
+         aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-2">
+          <div class="modal-header" style="border-bottom: none;">
+            <h5 class="modal-title">选择网络</h5>
+            <button id="closeNetWorkModal" type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="alert" style="background-color: rgb(242, 244, 246)">
+              <div>
+                <div v-for="(chain,index) in chains" :key="index" style="cursor: pointer" class="netWorkRow">
+                  <img :src="chainsMap[chain?.id].img" alt="" style="width: 20px; height: 20px; margin-right: 5px;">
+                  <span>{{ chainsMap[chain?.id].name }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
 import IHeader from '@/components/header/IHeader'
 import IFooter from '@/components/footer/IFooter'
-import {useAccount, useDisconnect} from "vagmi";
+import {useAccount, useDisconnect, useNetwork} from "vagmi";
+import {chainsMap} from "@/utils/model";
 
 export default {
   name: 'App',
@@ -65,10 +94,12 @@ export default {
     IHeader,
     IFooter
   },
-  data(){
+  data() {
     return {
       address: undefined,
-      disconnect: undefined
+      disconnect: undefined,
+      chains: [],
+      chainsMap: chainsMap
     }
   },
   created() {
@@ -76,6 +107,9 @@ export default {
     this.address = address
     const {disconnect} = useDisconnect();
     this.disconnect = disconnect
+
+    const {chains} = useNetwork();
+    this.chains = chains
   },
   methods: {
     disconnectFun() {

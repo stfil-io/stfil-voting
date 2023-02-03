@@ -17,6 +17,17 @@ let voteSignModel = {
     }
 }
 
+const chainsMap = {
+    3141: {
+        name: 'Filecoin - Hyperspace',
+        img: 'https://storage.froghub.io/froghub-home-html/assets/filecoin-logo.svg'
+    },
+    undefined: {
+        name: 'Filecoin - Hyperspace',
+        img: 'https://storage.froghub.io/froghub-home-html/assets/filecoin-logo.svg'
+    },
+}
+
 let proposalStatusMap = {
     '': {
         label: '',
@@ -36,4 +47,4 @@ let proposalStatusMap = {
     }
 }
 
-export {voteSignModel, proposalStatusMap}
+export {voteSignModel, proposalStatusMap, chainsMap}
