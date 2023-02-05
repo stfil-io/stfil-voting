@@ -115,7 +115,7 @@ export default {
     this.chain = chain
     console.log(this.chain)
     this.chains = chains
-    console.log(this.chains)
+    console.log('this.chains',this.chains)
   },
   methods: {
     connectWallet() {

@@ -20,11 +20,11 @@ let voteSignModel = {
 const chainsMap = {
     3141: {
         name: 'Filecoin - Hyperspace',
-        img: 'https://storage.froghub.io/froghub-home-html/assets/filecoin-logo.svg'
+        img: 'https://storage.froghub.io/froghub-home-html/assets/filecoin-logo.png'
     },
     undefined: {
         name: 'Filecoin - Hyperspace',
-        img: 'https://storage.froghub.io/froghub-home-html/assets/filecoin-logo.svg'
+        img: 'https://storage.froghub.io/froghub-home-html/assets/filecoin-logo.png'
     },
 }
 

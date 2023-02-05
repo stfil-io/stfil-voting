@@ -70,9 +70,11 @@
           <div class="modal-body">
             <div class="alert" style="background-color: rgb(242, 244, 246)">
               <div>
-                <div v-for="(chain,index) in chains" :key="index" style="cursor: pointer" class="netWorkRow">
-                  <img :src="chainsMap[chain?.id].img" alt="" style="width: 20px; height: 20px; margin-right: 5px;">
-                  <span>{{ chainsMap[chain?.id].name }}</span>
+                <div v-for="(chainId,index) in Object.keys(chainsMap)" :key="index" style="cursor: pointer" @click="switchNet(chainId)" class="netWorkRow">
+                  <template v-if="chainId !== 'undefined'">
+                    <img :src="chainsMap[chainId].img" alt="" style="width: 20px; height: 20px; margin-right: 5px;">
+                    <span>{{ chainsMap[chainId].name }}</span>
+                  </template>
                 </div>
               </div>
             </div>
@@ -85,7 +87,7 @@
 <script>
 import IHeader from '@/components/header/IHeader'
 import IFooter from '@/components/footer/IFooter'
-import {useAccount, useDisconnect, useNetwork} from "vagmi";
+import {useAccount, useDisconnect, useNetwork, useSwitchNetwork } from "vagmi";
 import {chainsMap} from "@/utils/model";
 
 export default {
@@ -99,7 +101,8 @@ export default {
       address: undefined,
       disconnect: undefined,
       chains: [],
-      chainsMap: chainsMap
+      chainsMap: chainsMap,
+      useSwitchNetwork: undefined
     }
   },
   created() {
@@ -110,11 +113,27 @@ export default {
 
     const {chains} = useNetwork();
     this.chains = chains
+    console.log(this.chains)
+
+    this.useSwitchNetwork = useSwitchNetwork;
+    let net = useSwitchNetwork ({
+      chainId: 1,
+      onError: (e) => {
+        console.log('onError', e)
+      },
+      onSuccess: (e) => {
+        console.log('onSuccess', e)
+      }
+    });
+    console.log(net)
   },
   methods: {
     disconnectFun() {
       document.getElementById("closeModal").click()
       this.disconnect()
+    },
+    switchNet(chainId){
+      console.log(chainId)
     }
   },
   computed: {
@@ -123,7 +142,7 @@ export default {
         return ''
       }
       return this.address.toString().substring(0, 10) + '...' + this.address.toString().substring(this.address.length - 10)
-    }
+    },
   }
 }
 </script>
