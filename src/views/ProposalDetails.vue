@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-lg-8">
           <div class="mb-4">
-            <a href="#" class="text-decoration-none">返回</a>
+            <a href="#" class="text-decoration-none">{{$t('fanhui')}}</a>
           </div>
 
           <div class="mb-4">
@@ -25,7 +25,7 @@
           <div class="p-30 mt-5 mb-5 " style="border-radius: 10px; box-shadow: 0px 4px 24px 0px rgb(16 27 82 / 8%)"
                v-if="detail.proposalStatus === 'IMMEDIATELY'">
             <div class="font-weight-bold h4 mb-4">
-              投出您的票
+              {{$t('touchunindepiao')}}
             </div>
             <div class="d-flex flex-column">
               <button type="button" class="btn btn-outline-primary mb-4" @click="voteSelect(index)" :key="index"
@@ -33,13 +33,13 @@
                       v-for="(choice,index) in detail?.choices">
                 {{ choice }}
               </button>
-              <button type="button" class="btn btn-primary" @click="connectWallet" v-if="!isConnected">连接钱包</button>
+              <button type="button" class="btn btn-primary" @click="connectWallet" v-if="!isConnected">{{$t('lianjieqianbao')}}</button>
               <button type="button" class="btn btn-primary" @click="voteFun" v-if="isConnected"
                       :disabled="walletSignInfo.isLoading || voteSelectIndex ===-1"
               >
                 <span v-if="walletSignInfo.isLoading" class="spinner-border spinner-border-sm mr-2"
                       style="position:relative; bottom: 2px;" role="status" aria-hidden="true"></span>
-                <span>投票</span>
+                <span>{{$t('toupiao')}}</span>
               </button>
               <input type="button" id="showVoteModeBtn" data-toggle="modal" data-target="#voteModal"
                      style="display: none;width: 0;height: 0;"/>
@@ -48,7 +48,7 @@
 
           <div class="p-30" style="border-radius: 10px; box-shadow: 0px 4px 24px 0px rgb(16 27 82 / 8%)">
             <div class="font-weight-bold h4 mb-4">
-              投票数
+              {{$t('toupiaoshu')}}
             </div>
             <template v-if="loading">
               <components-loading/>
@@ -56,7 +56,7 @@
             <template v-if="!loading">
               <div v-if="voteList.records.length === 0" class="mt-3">
                 <div class="d-flex justify-content-center align-items-center text-black-800">
-                  暂无投票数据
+                  {{$t('zangwutoupiaoshuju')}}
                 </div>
               </div>
               <template v-if="voteList.records.length !== 0">
@@ -90,41 +90,41 @@
         </div>
         <div class="col-lg-4 mt-4 mt-lg-0">
           <div class="container p-20" style="border-radius: 10px; box-shadow: 0px 4px 24px 0px rgb(16 27 82 / 8%)">
-            <div class="mb-2 h4 font-weight-bold">信息</div>
+            <div class="mb-2 h4 font-weight-bold">{{$t('xinxi')}}</div>
             <div class="row mb-1">
-              <div class="col-5 text-black-600 font-weight-bold">状态</div>
+              <div class="col-5 text-black-600 font-weight-bold">{{$t('zhuangtai')}}</div>
               <div class="col-7 text-right">{{ proposalStatusMap[detail?.proposalStatus].label }}</div>
             </div>
             <div class="row mb-1">
-              <div class="col-5 text-black-600 font-weight-bold">标识符</div>
+              <div class="col-5 text-black-600 font-weight-bold">{{$t('biaoshifu')}}</div>
               <div class="col-7 text-right cid-class" @click="gotoIpfs(detail.ipfs)">
                 {{ simpleCid(detail.ipfs) }}
               </div>
             </div>
             <div class="row mb-1">
-              <div class="col-5 text-black-600 font-weight-bold">高度</div>
+              <div class="col-5 text-black-600 font-weight-bold">{{$t('gaodu')}}</div>
               <div class="col-7 text-right">{{ detail.blockNumber }}</div>
             </div>
             <div class="row mb-1">
-              <div class="col-5 text-black-600 font-weight-bold">投票制度</div>
+              <div class="col-5 text-black-600 font-weight-bold">{{$t('toupiaozhidu')}}</div>
               <div class="col-7 text-right">单选投票</div>
             </div>
             <div class="row mb-1">
-              <div class="col-5 text-black-600 font-weight-bold">创建时间</div>
+              <div class="col-5 text-black-600 font-weight-bold">{{$t('chaungjianshijian')}}</div>
               <div class="col-7 text-right">{{ new Date(detail.created).toLocaleString() }}</div>
             </div>
             <div class="row mb-1">
-              <div class="col-5 text-black-600 font-weight-bold">开始时间</div>
+              <div class="col-5 text-black-600 font-weight-bold">{{$t('kaishishijian')}}</div>
               <div class="col-7 text-right">{{ new Date(detail.start).toLocaleString() }}</div>
             </div>
             <div class="row mb-1">
-              <div class="col-5 text-black-600 font-weight-bold">结束日期</div>
+              <div class="col-5 text-black-600 font-weight-bold">{{$t('jieshushijian')}}</div>
               <div class="col-7 text-right">{{ new Date(detail.end).toLocaleString() }}</div>
             </div>
           </div>
 
           <div class="container p-20 mt-4" style="border-radius: 10px; box-shadow: 0px 4px 24px 0px rgb(16 27 82 / 8%)">
-            <div class="mb-2 h4 font-weight-bold">当前结果</div>
+            <div class="mb-2 h4 font-weight-bold">{{$t('dangqianjieguo')}}</div>
             <div class="mb-4" v-for="(voteRes, index) in voteResult" :key="index">
               <div class="mb-1 font-weight-bold">{{ voteRes.label }}</div>
               <div class="progress mb-1">
@@ -134,7 +134,7 @@
               </div>
               <div class="d-flex justify-content-between">
                 <div>
-                  {{ voteRes.vp }} &nbsp; 张投票
+                  {{ voteRes.vp }} &nbsp; {{$t('zhangtoupiao')}}
                 </div>
                 <div>
                   {{ parseFloat(voteRes.rate).toFixed(2) }}%
@@ -155,7 +155,7 @@
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content p-2">
           <div class="modal-header" style="border-bottom: none;">
-            <div class="fw-bold fs-18 text-center" id="voteModalLabel">投出您的票</div>
+            <div class="fw-bold fs-18 text-center" id="voteModalLabel">{{$t('touchunindepiao')}}</div>
             <button id="voteCloseModal" type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -213,7 +213,9 @@
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content p-2">
           <div class="modal-header" style="border-bottom: none;">
-            <div class="fw-bold fs-18 text-center" id="voteInfoModalLabel">凭证</div>
+            <div class="fw-bold fs-18 text-center" id="voteInfoModalLabel">
+              {{$t('pingzheng')}}
+            </div>
             <button id="voteInfoCloseModal" type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -231,7 +233,8 @@
 
             <div class="d-flex justify-content-between w-100 mt-4">
               <div class="col-6">
-                <button type="button" class="btn btn-dark btn-sm w-100" data-dismiss="modal" aria-label="Close">取消
+                <button type="button" class="btn btn-dark btn-sm w-100" data-dismiss="modal" aria-label="Close">
+                  {{$t('quxiao')}}
                 </button>
               </div>
               <div class="col-6">
@@ -240,7 +243,7 @@
                         :disabled="walletSignInfo.isLoading">
                   <span v-if="walletSignInfo.isLoading" class="spinner-border spinner-border-sm mr-2"
                         style="position:relative; bottom: 2px;" role="status" aria-hidden="true"></span>
-                  在 Signator.io 上验证
+                  {{$t('zaiyanzheng')}}
                 </button>
               </div>
             </div>

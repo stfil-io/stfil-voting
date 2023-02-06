@@ -7,6 +7,7 @@ import store from './store'
 import App from './App.vue'
 import {filChain} from "@/utils/filChain";
 import {InjectedConnector} from 'vagmi/connectors/injected';
+import i18n from '@/utils/language/index'
 
 const {chains, provider, webSocketProvider} = configureChains(
     [filChain],
@@ -26,6 +27,7 @@ const client = createClient({
 const plugin = VagmiPlugin(client);
 const app = createApp(App);
 app.use(store)
+app.use(i18n)
 app.use(router)
 app.use(plugin)
 app.mount('#app')

@@ -18,13 +18,8 @@
           </svg>
         </button>
         <!-- mobile-nav control button -->
+        <div class="collapse navbar-collapse" id="navlinks1">
 
-        <div class="collapse navbar-collapse" id="navlinks">
-          <!--          <ul class="navbar-nav ml-auto">-->
-          <!--            <li class="nav-item" v-for="(menu ,index) in menus" :key="index">-->
-          <!--              <a class="nav-link" href="#">{{ menu.label }}</a>-->
-          <!--            </li>-->
-          <!--          </ul>-->
         </div>
 
         <div class="navbar-button mr-4">
@@ -42,8 +37,8 @@
         <div class="navbar-button" v-if="!address">
           <button class="btn btn-sm btn-outline-primary wallet-btn" data-toggle="modal" @click="connectWallet"
                   style="padding-top: 0.35rem; padding-bottom: 0.35rem; border-color: #dee2e6 !important;"
-                  data-target="#signup-modal">连接钱包 {{
-              isConnecting && pendingConnector && connectors[0].id === pendingConnector?.id ? ' (connecting...)' : ''
+                  data-target="#signup-modal">{{ $t('lianjieqianbao') }} {{
+              isConnecting && pendingConnector && connectors[0].id === pendingConnector?.id ? ` (${$t('connecting')}...)``` : ''
             }}
           </button>
         </div>
@@ -57,6 +52,14 @@
               <span class="fw-medium fs-12 ml-1">{{ simpleAddress }}</span>
             </div>
           </div>
+        </div>
+
+        <div class="ml-4">
+          <select class="border-0 language-ui" @change="handleCommandLanguage">
+            <option v-for="(k, v) in localeDic" :value="v" :key="k" :selected="v === locale">
+              {{ k }}
+            </option>
+          </select>
         </div>
       </nav>
     </div>
@@ -86,7 +89,12 @@ export default {
       ],
       chain: undefined,
       chains: [],
-      chainsMap: chainsMap
+      chainsMap: chainsMap,
+      locale: window.localStorage.getItem('locale') || 'en',
+      localeDic: {
+        'zh': 'Cn',
+        'en': 'En'
+      }
     }
   },
   watch: {
@@ -126,6 +134,12 @@ export default {
         chainId: 3141,
         connector: this.connectors[0]
       })
+    },
+    handleCommandLanguage(language) {
+      let val = language.target.value
+      this.locale = val
+      this.$i18n.locale = val
+      window.localStorage.setItem('locale', val)
     }
   },
   computed: {

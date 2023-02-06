@@ -1262,3 +1262,30 @@ input[type="number"] {
 .netWorkRow:hover{
 	color: $color-primary;
 }
+
+.language-ui {
+	background-color: transparent;
+	border: 1px solid #5E4FCD !important;
+	color: #5E4FCD;
+	border-radius: 8px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	padding: 0 5px;
+	cursor: pointer;
+	font-weight: 500;
+	margin-left: 10px;
+	text-align: center;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+}
+
+@media only screen and (max-width: 1200px) {
+
+	.language-ui {
+		margin-left: 12px;
+	}
+
+}
